@@ -7,7 +7,7 @@ import seaborn as sns
 conn = psycopg2.connect(
     dbname="kingfisher_db",  # Имя вашей базы данных
     user="postgres",             # Имя пользователя
-    password="dimashprpr",  # Ваш пароль
+    password="",  # Ваш пароль
     host="localhost",          # Хост
     port="5433"                # Порт
 )

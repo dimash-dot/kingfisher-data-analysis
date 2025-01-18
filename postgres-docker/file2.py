@@ -10,7 +10,7 @@ try:
     conn = psycopg2.connect(
         dbname="kingfisher_db",  # Убедитесь, что база данных существует
         user="postgres",
-        password="dimashprpr",
+        password="",
         host="localhost",  # Убедитесь, что контейнер доступен по этому хосту
         port="5433"  # Используем порт 5433 для подключения к Docker контейнеру
     )
@@ -18,15 +18,15 @@ try:
     cur = conn.cursor()
 
     # Определение кодировки CSV файла
-    with open("C:/Users/Dimash/IdeaProjects/untitled2/products.csv", 'rb') as f:
+    with open("../ parsing_code/products.csv", 'rb') as f:
         result = chardet.detect(f.read())
         print(f"Определенная кодировка файла: {result['encoding']}")
 
     # Загрузка данных из CSV файла с явной кодировкой
     try:
-        df = pd.read_csv("C:/Users/Dimash/IdeaProjects/untitled2/products.csv", encoding=result['encoding'])
+        df = pd.read_csv("../ parsing_code/products.csv", encoding=result['encoding'])
     except UnicodeDecodeError:
-        df = pd.read_csv("C:/Users/Dimash/IdeaProjects/untitled2/products.csv", encoding="latin1")
+        df = pd.read_csv("../ parsing_code/products.csv", encoding="latin1")
 
     # Отладка: выводим первые 5 строк из CSV для проверки
     print(df.head())
